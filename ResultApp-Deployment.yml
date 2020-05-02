@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 
 metadata:
-  name: resultgapp-deployment
+  name: resultapp-deployment
   labels:
     name: resultapp-deployment
     for: votingapp-viadeployments
