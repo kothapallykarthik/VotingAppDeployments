@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: resultgapp-deployment
+  labels:
+    name: resultapp-deployment
+    for: votingapp-viadeployments
+
+spec:
+  template:
+    metadata:
+      name: resultapp-pod
+      labels:
+        name: resultapp-pod
+        for: votingapp-viapods
+
+    spec:
+      containers:
+        - name: resultapp-image
+          image: dockersamples/examplevotingapp_result
+          ports:
+            - containerPort: 80
+  replicas: 1
+  selector:
+    matchLabels:
+      name: resultapp-pod
+      for: votingapp-viapods
+

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: workerapp-deployment
+  labels:
+    name: workerapp-deployment
+    for: votingapp-viadeployments
+
+spec:
+  template:
+    metadata:
+      name: workerapp-pod
+      labels:
+        name: workerapp-pod
+        for: votingapp-viapods
+
+    spec:
+      containers:
+        - name: workerapp-image
+          image: dockersamples/examplevotingapp_worker
+  replicas: 1
+  selector:
+    matchLabels:
+      name: workerapp-pod
+      for: votingapp-viapods
+
+
